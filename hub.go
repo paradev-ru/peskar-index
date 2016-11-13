@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path"
 	"path/filepath"
@@ -29,9 +30,8 @@ func NewHub(config *Config) *Hub {
 
 func (h *Hub) SuccessReceived(result []byte) error {
 	var job Job
-
 	if err := json.Unmarshal(result, &job); err != nil {
-		return err
+		return fmt.Errorf("Unmarshal error: %v (%s)", err, string(result))
 	}
 
 	if job.State != "finished" {

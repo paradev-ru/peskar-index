@@ -88,8 +88,6 @@ func (r *RedisStore) NewSubscribe(channel string) *Subscribe {
 func (s *Subscribe) Run() error {
 	var attempts int
 	var errStartTime time.Time
-	// var data map[string]interface{}
-
 WAIT:
 	for {
 		conn := s.pool.Get()
