@@ -41,7 +41,7 @@ type Config struct {
 func init() {
 	flag.StringVar(&templatedir, "templatedir", "", "template directory")
 	flag.StringVar(&resultdir, "resultdir", "", "result directory")
-	flag.StringVar(&redisAddr, "redis", "", "Redis server URL")
+	flag.StringVar(&redisAddr, "redis-addr", "", "Redis server URL")
 	flag.DurationVar(&redisIdleTimeout, "redis-idle-timeout", 0*time.Second, "close Redis connections after remaining idle for this duration")
 	flag.IntVar(&redisMaxIdle, "redis-max-idle", 0, "Maximum number of idle connections in the Redis pool")
 	flag.StringVar(&logLevel, "log-level", "", "level which confd should log messages")
@@ -70,7 +70,7 @@ func initConfig() error {
 	}
 
 	if config.RedisAddr == "" {
-		return errors.New("Must specify Redis server URL using -redis")
+		return errors.New("Must specify Redis server URL using -redis-addr")
 	}
 
 	if config.RedisIdleTimeout == 0*time.Second {
