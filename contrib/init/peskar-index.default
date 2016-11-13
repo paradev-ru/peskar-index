@@ -1,0 +1,3 @@
+export PESKAR_REDIS_ADDR=redis://localhost:6379/0
+export PESKAR_TMPDIR=/opt/peskar/template
+export PESKAR_RESULTDIR=/home/user/films/
