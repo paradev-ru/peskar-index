@@ -125,7 +125,7 @@ func setConfigFromFlag(f *flag.Flag) {
 		config.TemplateDir = templatedir
 	case "resultdir":
 		config.ResultDir = resultdir
-	case "redis":
+	case "redis-addr":
 		config.RedisAddr = redisAddr
 	case "redis-idle-timeout":
 		config.RedisIdleTimeout = redisIdleTimeout
