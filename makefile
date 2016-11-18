@@ -13,8 +13,8 @@ linux:
 
 deploy: linux
 	@echo "--> Uploading..."
-	scp -P 3389 contrib/init/peskar-index.default leo@paradev.ru:/etc/default/peskar-index
-	scp -P 3389 contrib/init/peskar-index leo@paradev.ru:/etc/init.d/peskar-index
+	scp -P 3389 contrib/init/sysvinit-debian/peskar-index.default leo@paradev.ru:/etc/default/peskar-index
+	scp -P 3389 contrib/init/sysvinit-debian/peskar-index leo@paradev.ru:/etc/init.d/peskar-index
 	scp -P 3389 bin/peskar-index leo@paradev.ru:/opt/peskar/peskar-index_new
 	scp -P 3389 template/movie.html leo@paradev.ru:/opt/peskar/template/movie.html
 	@echo "--> Restarting..."
