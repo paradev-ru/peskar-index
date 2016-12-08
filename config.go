@@ -44,7 +44,7 @@ func init() {
 	flag.StringVar(&redisAddr, "redis-addr", "", "Redis server URL")
 	flag.DurationVar(&redisIdleTimeout, "redis-idle-timeout", 0*time.Second, "close Redis connections after remaining idle for this duration")
 	flag.IntVar(&redisMaxIdle, "redis-max-idle", 0, "Maximum number of idle connections in the Redis pool")
-	flag.StringVar(&logLevel, "log-level", "", "level which confd should log messages")
+	flag.StringVar(&logLevel, "log-level", "", "level which index should log messages")
 	flag.BoolVar(&printVersion, "version", false, "print version and exit")
 }
 
