@@ -69,8 +69,11 @@ func (h *Hub) SuccessReceived(result []byte) error {
 		h.Log(job.ID, fmt.Sprintf("Error: %v", err))
 		return err
 	}
-	logrus.Infof("%s: All done", job.ID)
 	h.Log(job.ID, "Tarball unarchived")
+	if err := os.Remove(movieTarball); err != nil {
+		h.Log(job.ID, fmt.Sprintf("Can't delete files: %v", err))
+	}
+	logrus.Infof("%s: All done", job.ID)
 	return nil
 }
 
