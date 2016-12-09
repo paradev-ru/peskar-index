@@ -5,21 +5,13 @@ import (
 	"os"
 	"path"
 	"path/filepath"
-	"strings"
 
 	"github.com/Sirupsen/logrus"
+	"github.com/leominov/peskar-hub/peskar"
 	"github.com/leominov/peskar-index/movie"
 )
 
-type Job struct {
-	ID          string `json:"id,omitempty"`
-	State       string `json:"state,omitempty"`
-	DownloadURL string `json:"download_url,omitempty"`
-	InfoURL     string `json:"info_url,omitempty"`
-	Name        string `json:"name,omitempty"`
-}
-
-func (j *Job) SaveAsHTML(templatedir, resultdir string) error {
+func SaveAsHTML(j peskar.Job, templatedir, resultdir string) error {
 	templateFile := filepath.Join(templatedir, "movie.html")
 	if _, err := os.Stat(templateFile); os.IsNotExist(err) {
 		return err
@@ -31,7 +23,7 @@ func (j *Job) SaveAsHTML(templatedir, resultdir string) error {
 		}
 	}
 	logrus.Infof("%s: Parsing info page '%s'...", j.ID, j.InfoURL)
-	m, err := j.getMovie()
+	m, err := getMovie(j)
 	if err != nil {
 		return err
 	}
@@ -55,13 +47,7 @@ func (j *Job) SaveAsHTML(templatedir, resultdir string) error {
 	return nil
 }
 
-func (j *Job) Directory() string {
-	fileBase := filepath.Base(j.DownloadURL)
-	fileExt := filepath.Ext(fileBase)
-	return strings.TrimSuffix(fileBase, fileExt)
-}
-
-func (j *Job) getMovie() (*movie.Movie, error) {
+func getMovie(j peskar.Job) (*movie.Movie, error) {
 	m, err := movie.New(j.InfoURL)
 	if err != nil {
 		return nil, err

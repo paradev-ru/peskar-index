@@ -10,10 +10,14 @@ import (
 	"github.com/Sirupsen/logrus"
 )
 
+const (
+	BaseName = "peskar-index"
+)
+
 func main() {
 	flag.Parse()
 	if printVersion {
-		fmt.Printf("peskar-index %s\n", Version)
+		fmt.Printf("%s %s\n", BaseName, Version)
 		os.Exit(0)
 	}
 
@@ -21,9 +25,9 @@ func main() {
 		logrus.Fatal(err.Error())
 	}
 
-	logrus.Info("Starting peskar-index")
+	logrus.Infof("Starting %s", BaseName)
 
-	hub := NewHub(&config)
+	hub := NewHub(BaseName, &config)
 	if err := hub.redis.Check(); err != nil {
 		logrus.Errorf("Error creating redis connection: %+v", err)
 		os.Exit(1)

@@ -45,7 +45,7 @@ case "$1" in
         status_of_proc -p "$PESKAR_SSD_PIDFILE" "$PESKAR" "$BASE"
         ;;
     *)
-        echo "Usage: service peskar {start|stop|restart|status}"
+        echo "Usage: service peskar-index {start|stop|restart|status}"
         exit 1
         ;;
 esac
