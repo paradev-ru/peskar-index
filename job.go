@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/leominov/peskar-hub/peskar"
-	"github.com/leominov/peskar-index/movie"
+	"github.com/paradev-ru/peskar-hub/peskar"
+	"github.com/paradev-ru/peskar-index/movie"
 )
 
 func SaveAsHTML(j peskar.Job, templatedir, resultdir string) error {

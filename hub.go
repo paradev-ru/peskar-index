@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/leominov/peskar-hub/peskar"
-	"github.com/leominov/peskar-index/lib"
+	"github.com/paradev-ru/peskar-hub/peskar"
+	"github.com/paradev-ru/peskar-index/lib"
 )
 
 type Hub struct {
